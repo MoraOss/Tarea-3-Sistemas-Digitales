@@ -1,0 +1,30 @@
+//Este es el MUX 8:1, hereda desde el MUX 2:1, funciona como el TOP.
+
+`timescale 1ns / 1ps
+module mux8(
+    input logic A,
+    input logic B, C, D,
+    output logic out
+    );
+    
+    logic s2 = A;
+    logic s1 = B;
+    logic s0 = C;
+    logic d2 = ~D;
+    logic d3 = ~D;
+    
+    logic hout, mid_hout, mid_lout, lout; // creamos variables aux que representan salidas de los 4 mux2
+    logic h2out, l2out; // creamos variables aux que representan salidas de los 2 mux número 2
+    
+    mux2_1bit hmux(0, 1, s0, hout);
+    mux2_1bit mid_hmux(d2, d3, s0, mid_hout);   // son los 4 mux2 del comienzo
+    mux2_1bit mid_lmux(1, 1, s0, mid_lout);  
+    mux2_1bit lmux(0, 0, s0, lout); 
+    
+    
+    mux2_1bit h2mux(hout, mid_hout, s1, h2out); // los 2 mux del medio (segunda columna de mux)
+    mux2_1bit l2mux(mid_lout, lout, s1, l2out); 
+    
+    mux2_1bit finalmux(h2out, l2out, s2, out); // mux final con la salida final del mux 8:1
+    
+    endmodule
