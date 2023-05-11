@@ -1,0 +1,9 @@
+`timescale 1ns / 1ps
+
+module Circuito_1(
+    input logic A, B, C, D,
+    output logic out
+    );
+    
+    assign out = (A&~B) | (~B&C) | (~A&B&~D);
+endmodule
