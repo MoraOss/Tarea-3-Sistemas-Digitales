@@ -1,4 +1,4 @@
-// Este codigo crea los MUX 2:1, el MUX 8:1 heredará desde este código 7 veces para la creación del MUX 8:1
+// Este codigo crea los MUX 2:1, el MUX 8:1 heredará desde este código 7 veces para la creación del MUX 8:1, se adjunta imagen de como están conectados
 
 `timescale 1ns / 1ps
 
