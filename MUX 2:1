@@ -1,0 +1,14 @@
+// Este codigo crea los MUX 2:1, el MUX 8:1 heredará desde este código 7 veces para la creación del MUX 8:1
+
+`timescale 1ns / 1ps
+
+module mux2_1bit(
+
+    input logic d0,
+    input logic d1,
+    input logic s,
+    output logic out    
+    );
+    
+    assign out = s ? d1 : d0; // si es 1 sale d1 si es 0 sale d0
+endmodule
